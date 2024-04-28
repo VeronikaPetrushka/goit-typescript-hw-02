@@ -8,18 +8,23 @@ interface SearchFormProps {
 
 const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 
-	const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
-     evt.preventDefault();
-     const form = evt.currentTarget;
+	interface FormElements extends HTMLFormControlsCollection {
+  image: HTMLInputElement;
+	}
+
+	interface MyFormElement extends HTMLFormElement {
+  readonly elements: FormElements;
+	}
+
+	const handleSubmit = (evt: React.FormEvent<MyFormElement>) => {
+		evt.preventDefault();
+		const form = evt.currentTarget;
 		const image = form.elements.image.value;
 
-		// Якщо текстове поле порожнє, виводимо повідомлення
-		// і припиняємо виконання функції.
-		if(form.elements.image.value.trim() === "") {
-			toast.error("Please enter search term!")
+		if (image.trim() === "") {
+			toast.error("Please enter search term!");
 			return;
 		}
-
 		// У протилежному випадку викликаємо пропс
 		// і передаємо йому значення поля
 		onSearch(image);

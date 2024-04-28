@@ -7,7 +7,7 @@ import Loader from '../components/Loader/Loader.tsx';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage.tsx';
 import ImageModal from '../components/ImageModal/ImageModal.tsx';
 
-interface Image {
+export interface Image {
   id: string;
   urls: {
     small: string;
@@ -87,7 +87,7 @@ const App: React.FC = () => {
       )}
       {images.length > 0 && <ImageGallery items={images} openModal={openModal} />}
       {images.length > 0 &&hasMorePhotos && !isLoadingMore &&
-        <LoadMoreBtn onClick={handleLoadMore} hasMorePhotos={hasMorePhotos}  />
+        <LoadMoreBtn onClick={handleLoadMore} />
       }
       {images.length === 0 && (
         <p style={{ color: 'black', fontSize: 20 }}>Sorry, there are no photos to show.</p>
