@@ -1,7 +1,13 @@
 import Modal from 'react-modal';
 import css from './ImageModal.module.css';
 
-const ImageModal = ({ isOpen, closeModal, imageUrl }) => {
+interface ImageModalProps {
+  isOpen: boolean;
+  closeModal: () => void;
+  imageUrl: string | null;
+}
+
+const ImageModal: React.FC<ImageModalProps> = ({ isOpen, closeModal, imageUrl }) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -11,7 +17,7 @@ const ImageModal = ({ isOpen, closeModal, imageUrl }) => {
       shouldCloseOnEsc={true}
       shouldCloseOnOverlayClick={true}
     >
-      <img src={imageUrl} alt="Large Image" className={css.image} />
+      {imageUrl && <img src={imageUrl} alt="Large Image" className={css.image} />}
     </Modal>
   );
 };

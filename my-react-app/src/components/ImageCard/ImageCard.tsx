@@ -1,6 +1,13 @@
 import css from './ImageCard.module.css'
 
-const ImageCard = ({ smallImg, regularImg, altDesc, openModal }) => {
+interface ImageCardProps {
+  smallImg: string;
+  regularImg: string;
+  altDesc: string;
+  openModal: (imageUrl: string) => void;
+}
+
+const ImageCard: React.FC<ImageCardProps> = ({ smallImg, regularImg, altDesc, openModal }) => {
     return (
         <div className={css.imgContainer}>
             <img src={smallImg} alt={altDesc} onClick={() => openModal(regularImg)} />

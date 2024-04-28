@@ -2,11 +2,15 @@ import toast from 'react-hot-toast';
 import css from './SearchBar.module.css';
 import { IoSearch } from "react-icons/io5";
 
-const SearchForm = ({ onSearch }) => {
+interface SearchFormProps {
+  onSearch: (word: string) => void;
+}
 
-	const handleSubmit = (evt) => {
+const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
+
+	const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
      evt.preventDefault();
-     const form = evt.target;
+     const form = evt.currentTarget;
 		const image = form.elements.image.value;
 
 		// Якщо текстове поле порожнє, виводимо повідомлення
