@@ -1,0 +1,17 @@
+.imgList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.imgItem {
+    width: 400px;
+    height: 300px;
+    margin: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
